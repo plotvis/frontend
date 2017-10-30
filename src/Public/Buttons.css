@@ -1,0 +1,19 @@
+button {
+  padding: 9px 12px;
+  border: none;
+  border-radius: 4px;
+  font-family: 'Helvetica Neue', sans-serif;
+  color: #fff;
+  text-transform: uppercase;
+  font-size: 14px;
+  font-weight: bold;
+  background: #2979FF;
+  top: 50%;
+  transform: translateY(-50%);
+  position: relative;
+  cursor: pointer;
+}
+
+button:hover {
+  background: #1f63d3
+}
