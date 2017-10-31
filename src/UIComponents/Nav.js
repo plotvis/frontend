@@ -1,12 +1,15 @@
 import React from 'react';
 import '../Public/Nav.css';
+import { isAuthenticated } from '../Functions/UserManagement';
 
 const Nav = () => {
     return(
       <div>
         <nav>
           Plotvis
-          <button className="pull-right">Upload</button>
+          { isAuthenticated() ?
+            <button className="pull-right center">Upload</button>
+          : null}
         </nav>
         <div className="nav-spacer" />
       </div>

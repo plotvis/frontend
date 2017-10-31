@@ -1,4 +1,4 @@
-const createUser = (token) => {
+const createUser = (token, callback) => {
   sessionStorage.setItem('token', token);
 }
 
@@ -11,11 +11,12 @@ const getToken = () => {
 }
 
 const isAuthenticated = () => {
-  // const token = sessionStorage.getItem('token');
-  // if (token !== null) return token.length > 10;
-  // else return false;
+  const token = sessionStorage.getItem('token');
+  let ret = false;
 
-  return true
+  if (token !== null) ret = token.length > 10;
+
+  return ret
 }
 
 export {createUser, destroyUser, getToken, isAuthenticated};

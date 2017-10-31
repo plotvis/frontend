@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { BrowserRouter } from 'react-router-dom';
-import { Route, withRouter, Redirect } from 'react-router-dom';
+import { Route } from 'react-router-dom';
 import './Public/App.css';
-import { isAuthenticated } from './UserManagement';
+import { isAuthenticated } from './Functions/UserManagement';
 import AuthenticatedRoute from './AuthenticatedRoute';
 import NotAuthenticatedRoute from './NotAuthenticatedRoute';
 

@@ -8,12 +8,18 @@ button {
   font-size: 14px;
   font-weight: bold;
   background: #2979FF;
+  cursor: pointer;
+  letter-spacing: 1px;
+}
+button:hover {
+  background: #1f63d3
+}
+button.center {
   top: 50%;
   transform: translateY(-50%);
   position: relative;
-  cursor: pointer;
 }
-
-button:hover {
-  background: #1f63d3
+button.neutral {
+  background: #bababa;
+  color: #565656;
 }
