@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { BrowserRouter } from 'react-router-dom';
 import { Route } from 'react-router-dom';
 import './Public/App.css';
-import { isAuthenticated } from './Functions/UserManagement';
 import AuthenticatedRoute from './AuthenticatedRoute';
 import NotAuthenticatedRoute from './NotAuthenticatedRoute';
 
@@ -22,11 +21,11 @@ class App extends Component {
             <Route exact path="/" component={ Home } />
             <Route path="/about" component={ About } />
 
-            <NotAuthenticatedRoute authed={ isAuthenticated() } path="/login" component={ Login } />
-            <NotAuthenticatedRoute authed={ isAuthenticated() } path="/register" component={ Register } />
+            <NotAuthenticatedRoute authed={true} path="/login" component={ Login } />
+            <NotAuthenticatedRoute authed={true} path="/register" component={ Register } />
 
 
-            <AuthenticatedRoute authed={ isAuthenticated() } path='/dashboard' component={ Dashboard } />
+            <AuthenticatedRoute authed={true} path='/dashboard' component={ Dashboard } />
           </div>
         </div>
       </BrowserRouter>

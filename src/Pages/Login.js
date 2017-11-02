@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import Nav from '../UIComponents/Nav';
 import '../Public/Login.css';
 import { apiPost } from '../Functions/api';
-import { createUser, getToken } from '../Functions/UserManagement';
+import { createUser } from '../Functions/UserManagement';
 
 class Login extends Component {
   constructor(props) {
@@ -35,7 +35,6 @@ class Login extends Component {
     apiPost('auth/login', credentials).then((data) => {
       if (data.success) {
         createUser(data.token)
-        console.log(getToken());
         this.context.router.history.push('/dashboard');
       } else {
         this.setState({ apiError: data.message })
@@ -45,6 +44,7 @@ class Login extends Component {
 
   render() {
     const { apiError } = this.state;
+
     return (
       <div>
         <Nav />

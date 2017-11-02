@@ -1,13 +1,14 @@
 import React from 'react';
 import { Route, Redirect } from 'react-router-dom';
+import { isAuthenticated } from './Functions/UserManagement';
 
-const NotAuthenticatedRoute = ({component: Component, authed, ...rest}) => {
+const NotAuthenticatedRoute = ({component: Component, ...rest}) => {
   return (
     <Route
       {...rest}
-      render={(props) => authed === false
+      render={(props) => isAuthenticated() === false
         ? <Component {...props} />
-        : <Redirect to={{pathname: '/dashboard', state: {from: props.location}}} />}
+        : <Redirect to='/dashboard' />}
     />
   )
 }
