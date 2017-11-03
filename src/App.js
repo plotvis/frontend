@@ -11,6 +11,7 @@ import Login from './Pages/Login';
 import Register from './Pages/Register';
 
 import Dashboard from './Pages/Dashboard';
+import Upload from './Pages/Upload';
 
 class App extends Component {
   render() {
@@ -26,6 +27,7 @@ class App extends Component {
 
 
             <AuthenticatedRoute authed={true} path='/dashboard' component={ Dashboard } />
+            <AuthenticatedRoute authed={true} path='/upload' component={ Upload } />
           </div>
         </div>
       </BrowserRouter>
