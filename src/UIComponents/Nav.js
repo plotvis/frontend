@@ -13,7 +13,12 @@ const Nav = () => {
               <Link to="upload"><button>Upload</button></Link>
               <Link to="login"><button onClick={ (e) => destroyUser() }>Log out</button></Link>
             </div>
-          : null}
+          :
+            <div className="links">
+              <Link to="documentation"><button>Documentation</button></Link>
+              <Link to="login"><button>Log In</button></Link>
+            </div>
+          }
         </nav>
         <div className="nav-spacer" />
       </div>

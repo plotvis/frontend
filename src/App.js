@@ -6,7 +6,7 @@ import AuthenticatedRoute from './AuthenticatedRoute';
 import NotAuthenticatedRoute from './NotAuthenticatedRoute';
 
 import Home from './Pages/Home';
-import About from './Pages/About';
+import Documentation from './Pages/Documentation';
 import Login from './Pages/Login';
 import Register from './Pages/Register';
 
@@ -20,7 +20,7 @@ class App extends Component {
         <div className="body">
           <div className="content">
             <Route exact path="/" component={ Home } />
-            <Route path="/about" component={ About } />
+            <Route path="/documentation" component={ Documentation } />
 
             <NotAuthenticatedRoute authed={true} path="/login" component={ Login } />
             <NotAuthenticatedRoute authed={true} path="/register" component={ Register } />

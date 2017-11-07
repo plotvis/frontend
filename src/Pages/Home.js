@@ -1,13 +1,18 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import Nav from '../UIComponents/Nav';
+
 class Home extends Component {
   render() {
     return (
-      <div style={{background: '#93D4CD', height: '100vh', textAlign: 'center'}}>
-        <div style={{position: 'relative', top: '50%', transform: 'translateY(-50%)'}}>
-          <img src="https://avatars1.githubusercontent.com/u/33107934?s=200&v=4" alt='logo'/>
-          <h1 style={{margin: '0'}}>Plotvis</h1>
-          <Link to="/login"><button style={{marginTop: '12px'}}>Login</button></Link>
+      <div>
+        <Nav />
+        <div style={ { height: 'calc(100vh - 70px)', width: '100%'} }>
+          <div style={ { position: 'relative', top: '50%', transform: 'translateY(-50%)', textAlign: 'center'} }>
+            <h1>Drone data graphing.</h1>
+            <Link to="/register"><button style={{marginRight: '6px', width: '165px'}}>Get Started</button></Link>
+            <Link to="/documentation"><button style={{marginLeft: '6px', width: '165px'}}>Documentation</button></Link>
+          </div>
         </div>
       </div>
     );
