@@ -4,6 +4,7 @@ import Nav from '../UIComponents/Nav';
 import { destroyUser } from '../Functions/UserManagement';
 import { apiGet } from '../Functions/api';
 import { Line } from 'react-chartjs-2';
+import { Link } from 'react-router-dom';
 
 class Dashboard extends Component {
   constructor(props) {
@@ -71,29 +72,30 @@ class Dashboard extends Component {
       <div>
         <Nav />
         <div className="max-width" style={ {paddingTop: '40px'} }>
-          <Line data={data} height={100}/>
-          <div>
-            <b>Avalible Labels to Graph</b>
-            {
-              avData.map((category) => {
-                let _label = null;
-                category === '_id' || category === 'user' || category === '__v' ?
-                null :
-                _label = (<div key={category}>{category}</div>)
+          {labels.length !== 0 ?
+            <div>
+              <Line data={data} height={100}/>
+              <div>
+                <b>Avalible Labels to Graph</b>
+                {
+                  avData.map((category) => {
+                    let _label = null;
+                    category === '_id' || category === 'user' || category === '__v' ?
+                    null :
+                    _label = (<div key={category}>{category}</div>)
 
-                return _label
-              })
-            }
-          </div>
-          {/* { flights.map((flight) => {
-            return (
-              <div style={{'marginTop': '12px'}}>
-                {Object.keys(flight).map((key) => {
-                  return <div>{key}: {flight[key].toString()}</div>
-                })}
+                    return _label
+                  })
+                }
               </div>
-            )
-          })} */}
+            </div>
+          :
+            <div style={ { textAlign: 'center' } }>
+              <h1>No flight logs.</h1>
+              <Link to="upload"><button>Upload CSV</button></Link>
+            </div>
+          }
+
         </div>
       </div>
     );
