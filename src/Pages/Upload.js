@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import Nav from '../UIComponents/Nav';
 import Dropzone from 'react-dropzone';
-import { apiUpload } from '../Functions/api';
 import { API_URL } from '../config.js';
 import { getToken } from '../Functions/UserManagement';
 import PropTypes from 'prop-types';
