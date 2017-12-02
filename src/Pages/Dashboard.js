@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import Nav from '../UIComponents/Nav';
 import { destroyUser } from '../Functions/UserManagement';
 import { apiGet } from '../Functions/api';
-import { Line } from 'react-chartjs-2';
+import Graph from '../UIComponents/Graph';
 import { Link } from 'react-router-dom';
 
 class Dashboard extends Component {
@@ -15,12 +15,20 @@ class Dashboard extends Component {
       wind: {},
       temperature: {},
       cloudCoverage: {},
-      avData: []
+      avData: [],
+      places: [],
+      projects: [],
+      place: '',
+      project: ''
     }
   }
 
-  componentWillMount = () => {
-    apiGet('logs').then((data) => {
+  getLogs = (place, project) => {
+    apiGet(`logs?placeName=${place}&projectReference=${project}`).then((data) => {
+      if (data.logs.length === 0) {
+        this.setState({flights: [], labels: []});
+        return;
+      }
       this.setState({ flights: data.logs, avData: Object.keys(data.logs[0]) })
       const temp = {
         label: 'Temperature (°F)',
@@ -56,12 +64,39 @@ class Dashboard extends Component {
     });
   }
 
+  componentWillMount = () => {
+    let place = '';
+    let project = '';
+    apiGet('graphData/uniques?placeName&projectReference').then((data) => {
+      const uni = data.uniques;
+      console.log(uni);
+      if (data.success && uni.placeName.length > 0 && uni.projectReference.length > 0) {
+        place = uni.placeName[0];
+        project = uni.projectReference[0];
+        this.setState({places: uni.placeName, place: place, projects: uni.projectReference, project: project})
+        this.getLogs(place, project);
+      }
+    });
+  }
+
   logout = () => {
     destroyUser();
     this.context.router.history.push('/login');
   }
+
+  changePlace = (e) => {
+    this.setState({place: e.target.value});
+    this.getLogs(e.target.value, this.state.project);
+  }
+  changeProject = (e) => {
+    this.setState({project: e.target.value});
+    this.getLogs(this.state.place, e.target.value);
+  }
+
+
+
   render() {
-    const { labels, wind, temperature, avData, cloudCoverage } = this.state;
+    const { labels, wind, temperature, avData, cloudCoverage, places, projects, place, project } = this.state;
 
     const data = {
       labels: labels,
@@ -74,27 +109,34 @@ class Dashboard extends Component {
         <div className="max-width" style={ {paddingTop: '40px'} }>
           {labels.length !== 0 ?
             <div>
-              <Line data={data} height={100}/>
-              <div>
-                <b>Avalible Labels to Graph</b>
-                {
-                  avData.map((category) => {
-                    let _label = null;
-                    category === '_id' || category === 'user' || category === '__v' ?
-                    null :
-                    _label = (<div key={category}>{category}</div>)
-
-                    return _label
-                  })
-                }
-              </div>
+              <Graph data={data}/>
+              <select onChange={this.changePlace} value={place}>
+                { places.map(function(place) {
+                  return (<option key={place}>{place}</option>)
+                })}
+              </select>
+              <select onChange={this.changeProject} value={project}>
+                { projects.map(function(project) {
+                  return (<option key={project}>{project}</option>)
+                })}
+              </select>
             </div>
           :
             <div style={ { textAlign: 'center' } }>
               <h1>No flight logs.</h1>
-              <Link to="upload"><button>Upload CSV</button></Link>
+              <select onChange={this.changePlace} value={place}>
+                { places.map(function(place) {
+                  return (<option key={place}>{place}</option>)
+                })}
+              </select>
+              <select onChange={this.changeProject} value={project}>
+                { projects.map(function(project) {
+                  return (<option key={project}>{project}</option>)
+                })}
+              </select>
             </div>
           }
+
 
         </div>
       </div>

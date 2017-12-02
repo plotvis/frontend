@@ -9,7 +9,7 @@ export function apiGet(endpoint) {
     'token': getToken()
   };
 
-  return fetch(`${API_URL}${endpoint}/`, {headers: HEADERS}).then((res) => res.json());
+  return fetch(`${API_URL}${endpoint}`, {headers: HEADERS}).then((res) => res.json());
 }
 
 export function apiPost(endpoint, data = {}, contentType) {
