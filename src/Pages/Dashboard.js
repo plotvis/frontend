@@ -4,7 +4,6 @@ import Nav from '../UIComponents/Nav';
 import { destroyUser } from '../Functions/UserManagement';
 import { apiGet } from '../Functions/api';
 import Graph from '../UIComponents/Graph';
-import { Link } from 'react-router-dom';
 
 class Dashboard extends Component {
   constructor(props) {
@@ -69,7 +68,6 @@ class Dashboard extends Component {
     let project = '';
     apiGet('graphData/uniques?placeName&projectReference').then((data) => {
       const uni = data.uniques;
-      console.log(uni);
       if (data.success && uni.placeName.length > 0 && uni.projectReference.length > 0) {
         place = uni.placeName[0];
         project = uni.projectReference[0];
@@ -96,7 +94,7 @@ class Dashboard extends Component {
 
 
   render() {
-    const { labels, wind, temperature, avData, cloudCoverage, places, projects, place, project } = this.state;
+    const { labels, wind, temperature, cloudCoverage, places, projects, place, project } = this.state;
 
     const data = {
       labels: labels,

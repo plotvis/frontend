@@ -12,6 +12,8 @@ import Register from './Pages/Register';
 
 import Dashboard from './Pages/Dashboard';
 import Upload from './Pages/Upload';
+import Logs from './Pages/Logs';
+import Log from './Pages/Log';
 
 class App extends Component {
   render() {
@@ -28,6 +30,8 @@ class App extends Component {
 
             <AuthenticatedRoute authed={true} path='/dashboard' component={ Dashboard } />
             <AuthenticatedRoute authed={true} path='/upload' component={ Upload } />
+            <AuthenticatedRoute authed={true} path='/logs' component={ Logs } />
+            <AuthenticatedRoute authed={true} path='/log/:id' component={ Log } />
           </div>
         </div>
       </BrowserRouter>
