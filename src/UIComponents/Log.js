@@ -1,15 +1,21 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import dateFormat from 'dateformat';
 
 const Log = ({log}) => {
-    return(
-      <div className="card margin-v">
-        <div>{log.flightDate}</div>
-        <div>{log.projectReference}</div>
-        <div>{log.placeName}</div>
-        <Link to={`log/${log._id}`} style={{color: '#2979FF'}}>Edit</Link>
-      </div>
-    )
+  const flightDate = new Date(log.flightDate);
+
+  return(
+    <div className="trow">
+      <Link to={`log/${log._id}`}>
+        <div className="row">
+          <div className="col-4">{dateFormat(flightDate, "mmmm dS, yyyy")}</div>
+          <div className="col-4">{log.projectReference}</div>
+          <div className="col-4">{log.placeName}</div>          
+        </div>
+      </Link>
+    </div>
+  )
 }
 
 export default Log;

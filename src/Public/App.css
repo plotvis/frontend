@@ -1,5 +1,6 @@
 @import "Buttons.css";
 @import "Inputs.css";
+@import "Table.css";
 
 html, body {
   padding: 0;
@@ -31,6 +32,9 @@ a {
   background: #F5F5F5;
   border-radius: 4px;
   padding: 12px;
+}
+.card-link:hover {
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
 }
 /* POSITIONING */
 .flex {

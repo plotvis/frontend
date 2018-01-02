@@ -28,9 +28,18 @@ class Login extends Component {
         <Nav />
         <div className="max-width">
           <h1 className="margin-top">Flight Logs</h1>
-          { logs.map(function(log) {
-            return (<Log log={log} key={log._id}/>)
-          }) }
+          <div className='table'>
+            <div className='thead row'>
+              <div className='col-4'>Date</div>
+              <div className='col-4'>Project</div>
+              <div className='col-4'>Location</div>
+            </div>
+            <div className="tbody">
+              { logs.map(function(log) {
+                return (<Log log={log} key={log._id}/>)
+              }) }              
+            </div>
+          </div>
         </div>
       </div>
     );

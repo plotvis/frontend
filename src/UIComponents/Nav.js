@@ -12,6 +12,7 @@ const Nav = () => {
             <div className="links">
               <Link to="/upload"><button>Upload</button></Link>
               <Link to="/logs"><button>Logs</button></Link>
+              <Link to="/data"><button>Data</button></Link>
               <Link to="/login"><button onClick={ (e) => destroyUser() }>Log out</button></Link>
             </div>
           :

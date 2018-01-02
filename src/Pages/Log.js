@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Nav from '../UIComponents/Nav';
-import Log from '../UIComponents/Log';
 import '../Public/Login.css';
 import { apiGet } from '../Functions/api';
 
@@ -71,20 +70,20 @@ class Login extends Component {
           <div className="row">
             <div className="col-4 padding">
               <div className="card">
-                <h3>Wind</h3>
-                <h2>{log.wind}mph</h2>
+                <h3>Max Altitude</h3>
+                <h2>{log.maxAltitude}ft</h2>
               </div>
             </div>
             <div className="col-4 padding">
               <div className="card">
-                <h3>Temperature</h3>
-                <h2>{log.temperature}°F</h2>
+                <h3>Duration</h3>
+                <h2>{log.durationSeconds} sec</h2>
               </div>
             </div>
             <div className="col-4 padding">
               <div className="card">
-                <h3>Cloud Coverage</h3>
-                <h2>{log.cloudCoverage}%</h2>
+                <h3>Distance</h3>
+                <h2>{log.distance}ft</h2>
               </div>
             </div>
           </div>

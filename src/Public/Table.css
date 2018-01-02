@@ -1,0 +1,14 @@
+.table {
+  margin-bottom: 20px
+}
+.thead {
+  padding: 10px 5px;
+  font-weight: bold;
+}
+.trow {
+  padding: 10px 5px;
+  border-radius: 4px;
+}
+.trow:nth-child(odd) {
+  background: #F7F7F7;
+}
